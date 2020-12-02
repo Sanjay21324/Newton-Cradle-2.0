@@ -1,0 +1,29 @@
+
+    class Line {
+        constructor(bodyA, pointB) {
+          var options = {
+            bodyA: bodyA,
+            pointB: pointB,
+            stiffness: 1,
+            angularStiffness: 1,
+            length: 220
+          };
+          this.pointB = pointB;
+          this.pointX = bodyA.x;
+          this.pointY = bodyA.y - 250;
+          this.line = Constraint.create(options);
+          World.add(world, this.line);
+        }
+      
+        display() {
+          if (this.line.bodyA) {
+            var pointA = this.line.bodyA.position;
+            var pointB = this.pointB;
+            push();
+            strokeWeight(3.5);
+            stroke("Green");
+            line(pointB.x, pointB.y, pointA.x, pointA.y);
+            pop();
+          }
+        }
+      }
